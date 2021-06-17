@@ -1,10 +1,9 @@
-# formulario-em-react
+# Formulário em React com ViaCEP
 
-Formulario criado em React utilizando:
+Um exemplo de formulário desenvolvido em React utilizando Material.UI e ViaCEP API.
 
--Function Components
--MaterialUI
--Hooks (useState, useEffect, useContext)
--Hook personalizado
--Context
--Providers
+💻 Tecnologias usadas:
+
+- [React](https://pt-br.reactjs.org/)
+- [Material-UI](https://material-ui.com/pt/)
+- [ViaCEP](https://viacep.com.br/)
