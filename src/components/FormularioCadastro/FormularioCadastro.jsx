@@ -5,7 +5,7 @@ import DadosEntrega from "./DadosEntrega";
 import { Step, StepLabel, Stepper, Typography } from "@material-ui/core";
 
 function FormularioCadastro({ aoEnviar }) {
-  const [etapaAtual, setEtapaAtual] = useState(0);
+  const [etapaAtual, setEtapaAtual] = useState(2);
   const [dadosColetados, setDados] = useState("");
 
   useEffect(() => {

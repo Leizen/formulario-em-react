@@ -8,21 +8,50 @@ function DadosEntrega({ aoEnviar }) {
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
 
+  // console.log(cep);
+
+  // function Teste(valor) {
+  //   setCep(valor);
+
+  //   fetch(`http://viacep.com.br/ws/${valor}/json/`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // }
+
+  function onBlurCep(value) {
+    const cep = value?.replace(/[^0-9]/g, "");
+
+    if (cep?.length !== 8) {
+      return;
+    }
+
+    fetch(`http://viacep.com.br/ws/${cep}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setEndereco(data.logradouro);
+        setEstado(data.uf);
+        setCidade(data.localidade);
+      });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    aoEnviar({ cep, endereco, numero, estado, cidade });
+  }
+
   return (
     <form
       onSubmit={(event) => {
-        event.preventDefault();
-        aoEnviar({ cep, endereco, numero, estado, cidade });
+        handleSubmit(event);
       }}
     >
       <TextField
-        value={cep}
-        onChange={(event) => {
-          setCep(event.target.value);
+        onBlur={(event) => {
+          onBlurCep(event.target.value);
         }}
         id="cep"
         label="CEP"
-        type="number"
+        type="text"
         variant="outlined"
         margin="normal"
         required
